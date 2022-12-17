@@ -1,11 +1,8 @@
 .card {
   border-radius: 0.5rem;
   background-color: var(--containerBgColor);
-  overflow: hidden;
-}
-
-.card:hover {
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
 .card__body {

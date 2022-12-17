@@ -50,7 +50,7 @@ body {
 }
 
 .images__container {
-  padding: 3vw;
+  padding: 6vh 3vw;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 320px));
   justify-content: center;
