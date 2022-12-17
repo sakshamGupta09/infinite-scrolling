@@ -1,7 +1,11 @@
 .card {
   border-radius: 0.5rem;
-  background-color: #fff;
+  background-color: var(--containerBgColor);
   overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow);
 }
 
 .card__body {
@@ -14,10 +18,6 @@
 
 .card__description {
   color: var(--textColorSecondary);
-}
-
-.card:hover {
-  box-shadow: 0px 50px 77px rgb(176 183 195 / 22%);
 }
 
 .card__img {
