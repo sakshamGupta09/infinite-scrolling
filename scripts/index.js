@@ -73,12 +73,12 @@ function getCardNodeHTML(photo) {
 
   // Card body
   const cardBodyElement = document.createElement("div");
-  setAttributesOfDomNode(cardBodyElement, { class: "card__body" });
+  setAttributesOfDomNode(cardBodyElement, { class: "card__body font-bold" });
 
   // Card title
   const cardTitleElement = document.createElement("h4");
   setAttributesOfDomNode(cardTitleElement, {
-    class: "text-2xl card__title break-word capitalize",
+    class: "text-2xl card__title break-word capitalize line-clamp-2",
   });
   cardTitleElement.textContent = photo.description || photo.alt_description;
 
