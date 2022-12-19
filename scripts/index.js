@@ -1,21 +1,22 @@
 import debounceTime from "../utils/debounce.js";
 
 // State
+
 let photos = [];
 
 const paginationParams = {
   per_page: 30,
   page: 1,
-  totalRecords: 1500,
+  totalRecords: 300,
 };
 
 // Constants
 
-const API_URL = "https://api.unsplash.com";
-
-const API_KEY = "N02X3WfRqFebGeSgKmrJasrqXDXmeSal72qaFl4V8tI";
-
-const debounceDelay = 900;
+const CONSTANTS = {
+  API_URL: "https://api.unsplash.com",
+  API_KEY: "N02X3WfRqFebGeSgKmrJasrqXDXmeSal72qaFl4V8tI",
+  debounceDelay: 900,
+};
 
 // Dom Elements
 const cardsSectionElement = document.getElementById("images__container");
@@ -30,7 +31,7 @@ async function fetchImages() {
   toogleLoaderVisibility(true);
   const queryParams = getPayload();
   try {
-    const apiURL = `${API_URL}/photos/?` + queryParams;
+    const apiURL = `${CONSTANTS.API_URL}/photos/?` + queryParams;
     const response = await fetch(apiURL);
     const data = await response.json();
     data && setImages(data);
@@ -43,7 +44,7 @@ async function fetchImages() {
 
 function getPayload() {
   const queryParams = new URLSearchParams({
-    client_id: API_KEY,
+    client_id: CONSTANTS.API_KEY,
     per_page: paginationParams.per_page,
     page: paginationParams.page,
     order_by: "popular",
@@ -122,7 +123,7 @@ function startObservingIntersection() {
     threshold: 0,
   };
   const observer = new IntersectionObserver(
-    debounceTime(intersectionCallback, debounceDelay),
+    debounceTime(intersectionCallback, CONSTANTS.debounceDelay),
     options
   );
   const targetElement = document.getElementById("target");
@@ -149,5 +150,7 @@ function loadMoreRecords() {
 }
 
 // On load
+
 fetchImages();
+
 startObservingIntersection();
