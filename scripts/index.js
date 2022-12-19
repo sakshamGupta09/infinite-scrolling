@@ -1,9 +1,12 @@
+import debounceTime from "../utils/debounce.js";
+
 // State
 let photos = [];
 
 const paginationParams = {
   per_page: 30,
   page: 1,
+  totalRecords: 150,
 };
 
 // Constants
@@ -15,11 +18,14 @@ const API_KEY = "N02X3WfRqFebGeSgKmrJasrqXDXmeSal72qaFl4V8tI";
 // Dom Elements
 const cardsSectionElement = document.getElementById("images__container");
 
+const loaderElement = document.getElementById("loader");
+
 // Event Listeners
 
 // Functions
 
 async function fetchImages() {
+  toogleLoaderVisibility(true);
   const queryParams = getPayload();
   try {
     const apiURL = `${API_URL}/photos/?` + queryParams;
@@ -28,6 +34,8 @@ async function fetchImages() {
     data && setImages(data);
   } catch (error) {
     console.error(error);
+  } finally {
+    toogleLoaderVisibility(false);
   }
 }
 
@@ -60,7 +68,7 @@ function renderUI() {
 function getCardNodeHTML(photo) {
   // Card container
   const cardContainerElement = document.createElement("div");
-  setAttributesOfDomNode(cardContainerElement, { class: "card" });
+  setAttributesOfDomNode(cardContainerElement, { class: "card z-1" });
 
   // Image
   const imageElement = document.createElement("img");
@@ -101,5 +109,39 @@ function setAttributesOfDomNode(domNode, attributes) {
   }
 }
 
+function toogleLoaderVisibility(showLoaderFlag) {
+  loaderElement.hidden = !showLoaderFlag;
+}
+
+function startObservingIntersection() {
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0,
+  };
+  const observer = new IntersectionObserver(intersectionCallback, options);
+  const targetElement = document.getElementById("target");
+  observer.observe(targetElement);
+}
+
+function intersectionCallback(entries) {
+  const entry = entries[0];
+  if (entry.isIntersecting && hasMoreRecords()) {
+    loadMoreRecords();
+  }
+}
+
+function hasMoreRecords() {
+  return (
+    paginationParams.per_page * paginationParams.page <
+    paginationParams.totalRecords
+  );
+}
+
+function loadMoreRecords() {
+  paginationParams.page++;
+}
+
 // On load
 fetchImages();
+startObservingIntersection();

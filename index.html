@@ -45,8 +45,14 @@
     />
   </head>
   <body>
-    <header class="header sticky top-0 z-1"></header>
-    <section class="images__container" id="images__container"></section>
-    <script src="/scripts/index.js"></script>
+    <header class="header sticky top-0 z-2"></header>
+    <div class="relative">
+      <section class="images__container" id="images__container"></section>
+      <div id="target"></div>
+    </div>
+    <div id="loader" class="text-center">
+      <img src="/assets/spinner.svg" alt="Loading images" />
+    </div>
+    <script type="module" src="/scripts/index.js"></script>
   </body>
 </html>
