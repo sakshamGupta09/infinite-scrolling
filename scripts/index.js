@@ -6,7 +6,7 @@ let photos = [];
 const paginationParams = {
   per_page: 30,
   page: 1,
-  totalRecords: 150,
+  totalRecords: 1500,
 };
 
 // Constants
@@ -14,6 +14,8 @@ const paginationParams = {
 const API_URL = "https://api.unsplash.com";
 
 const API_KEY = "N02X3WfRqFebGeSgKmrJasrqXDXmeSal72qaFl4V8tI";
+
+const debounceDelay = 900;
 
 // Dom Elements
 const cardsSectionElement = document.getElementById("images__container");
@@ -119,7 +121,10 @@ function startObservingIntersection() {
     rootMargin: "0px",
     threshold: 0,
   };
-  const observer = new IntersectionObserver(intersectionCallback, options);
+  const observer = new IntersectionObserver(
+    debounceTime(intersectionCallback, debounceDelay),
+    options
+  );
   const targetElement = document.getElementById("target");
   observer.observe(targetElement);
 }
@@ -140,6 +145,7 @@ function hasMoreRecords() {
 
 function loadMoreRecords() {
   paginationParams.page++;
+  fetchImages();
 }
 
 // On load
