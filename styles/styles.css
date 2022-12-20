@@ -54,3 +54,17 @@ body {
   color: var(--themeColor);
   letter-spacing: 0.6px;
 }
+
+@media only screen and (max-width: 650px) {
+  .header {
+    padding: 0.75rem;
+  }
+
+  .header__creator {
+    font-size: 1.5rem;
+  }
+
+  #theme-label {
+    display: none;
+  }
+}

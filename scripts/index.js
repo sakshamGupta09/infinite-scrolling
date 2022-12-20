@@ -10,8 +10,6 @@ const paginationParams = {
   totalRecords: 300,
 };
 
-let isDarkMode = false;
-
 // Constants
 
 const CONSTANTS = {
