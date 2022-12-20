@@ -1,0 +1,20 @@
+:root {
+  --themeColor: #ffb61b;
+  --backgroundColor: #edf5ff;
+  --textColorPrimary: rgb(15 23 42);
+  --textColorSecondary: rgb(71 85 105);
+  --headerBgColor: rgb(248 250 252);
+  --containerBgColor: #fff;
+  --headerHeight: 76px;
+  --shadow: 0 1px 2px 0 rgb(0 0 0 / 0.1);
+  --fontFamilyPrimary: "Open Sans", sans-serif;
+  --fontFamilySecondary: "My Soul", cursive;
+}
+
+[data-theme="dark"] {
+  --backgroundColor: #2e2f32;
+  --textColorPrimary: rgb(248 250 252);
+  --textColorSecondary: rgb(148 163 184);
+  --headerBgColor: rgba(11, 33, 63, 1);
+  --containerBgColor: rgb(30 41 59 / 1);
+}

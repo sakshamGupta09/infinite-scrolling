@@ -10,12 +10,18 @@ const paginationParams = {
   totalRecords: 300,
 };
 
+let isDarkMode = false;
+
 // Constants
 
 const CONSTANTS = {
   API_URL: "https://api.unsplash.com",
   API_KEY: "N02X3WfRqFebGeSgKmrJasrqXDXmeSal72qaFl4V8tI",
   debounceDelay: 900,
+  themeLabels: {
+    dark: "Dark theme",
+    light: "Light theme",
+  },
 };
 
 // Dom Elements
@@ -23,7 +29,15 @@ const cardsSectionElement = document.getElementById("images__container");
 
 const loaderElement = document.getElementById("loader");
 
+const themeLabelElement = document.getElementById("theme-label");
+
+const themeIconElement = document.getElementById("theme-icon");
+
+const themeCheckboxElement = document.getElementById("theme-switch");
+
 // Event Listeners
+
+themeCheckboxElement.addEventListener("change", onThemeChange);
 
 // Functions
 
@@ -149,8 +163,31 @@ function loadMoreRecords() {
   fetchImages();
 }
 
+function getSystemTheme() {
+  let isDarkMode = false;
+  if (window?.matchMedia("(prefers-color-scheme: dark)")?.matches) {
+    isDarkMode = true;
+  }
+  setTheme(isDarkMode);
+}
+
+function setTheme(isDarkMode) {
+  const themeLabel = isDarkMode ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", themeLabel);
+  themeLabelElement.textContent = CONSTANTS.themeLabels[themeLabel];
+  const iconClass = isDarkMode ? "far fa-moon" : "far fa-sun";
+  themeIconElement.setAttribute("class", iconClass);
+  themeCheckboxElement.checked = isDarkMode;
+}
+
+function onThemeChange(e) {
+  setTheme(e.target.checked);
+}
+
 // On load
 
 fetchImages();
+
+getSystemTheme();
 
 startObservingIntersection();
