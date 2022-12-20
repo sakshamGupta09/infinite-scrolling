@@ -24,3 +24,8 @@ This is a vanilla JS project which uses [Unsplash API](https://unsplash.com/docu
 2). Light Mode
 
 <img width="1728" alt="Screenshot 2022-12-20 at 7 35 11 AM" src="https://user-images.githubusercontent.com/49288222/208564161-d01e1322-b2d2-4f38-b1e1-54006ec6d01c.png">
+
+3). Mobile screen
+
+<img width="498" alt="Screenshot 2022-12-20 at 9 18 38 AM" src="https://user-images.githubusercontent.com/49288222/208579455-c0097760-9f96-4517-b7c9-beacd79cfe5e.png">
+
