@@ -14,3 +14,13 @@ This is a vanilla JS project which uses [Unsplash API](https://unsplash.com/docu
 - Unsplash API is used for fetching records which supports pagination.
 - Completely responsive and elegant UI.
 - Uses fetch API for network calls.
+
+# Screenshots
+
+1). Dark Mode
+
+<img width="1728" alt="Screenshot 2022-12-20 at 7 35 05 AM" src="https://user-images.githubusercontent.com/49288222/208564061-757512e2-eef4-4b78-9b63-68b47a8558cb.png">
+
+2). Light Mode
+
+<img width="1728" alt="Screenshot 2022-12-20 at 7 35 11 AM" src="https://user-images.githubusercontent.com/49288222/208564161-d01e1322-b2d2-4f38-b1e1-54006ec6d01c.png">
